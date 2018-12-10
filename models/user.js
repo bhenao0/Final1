@@ -65,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
             version: false
         });
 
-    //User.associate = models => {
+    User.associate = models => {
         //asociar los roles
        // User.belongsToMany(models.Role, {
           //  as: 'Roles',
@@ -73,10 +73,10 @@ module.exports = (sequelize, DataTypes) => {
             //foreignKey: 'user'
         //});
 
-        //User.belongsTo(models.File, {
-          //  foreignKey: 'photo'
-        //});
-   // };
+        User.belongsTo(models.File, {
+           foreignKey: 'photo'
+        });
+    };
 
     return User;
 };
