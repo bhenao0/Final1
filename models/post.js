@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        
     }, {
             // don't add the timestamp attributes (updatedAt, createdAt)
             timestamps: true,
@@ -37,10 +36,12 @@ module.exports = (sequelize, DataTypes) => {
 
     Post.associate = models => {
         Post.belongsTo(models.File, {
+            as: 'Photo',
             foreignKey: 'file'
         });
  
         Post.belongsTo(models.User, {
+            as: 'Autor',
             foreignKey: 'user'
         });    
     };

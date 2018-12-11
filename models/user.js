@@ -38,11 +38,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        // default values for dates => current time
-        birthday: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
     }, {
             // don't add the timestamp attributes (updatedAt, createdAt)
             timestamps: true,
@@ -66,15 +61,9 @@ module.exports = (sequelize, DataTypes) => {
         });
 
     User.associate = models => {
-        //asociar los roles
-       // User.belongsToMany(models.Role, {
-          //  as: 'Roles',
-            //through: 'user_role',
-            //foreignKey: 'user'
-        //});
-
         User.belongsTo(models.File, {
-           foreignKey: 'photo'
+            as: 'Photo',
+            foreignKey: 'photo'
         });
     };
 
